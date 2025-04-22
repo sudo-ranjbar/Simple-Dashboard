@@ -1,5 +1,7 @@
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import "./globals.css";
+import Sidebar from "@/components/layout/sidebar";
+import Header from "@/components/layout/header";
 
 export const metadata = {
   title: "Create Next App",
@@ -16,7 +18,15 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex h-screen p-2 gap-x-5">
+            <Sidebar />
+            <div className="p-4 bg-background rounded-md w-full h-full border shadow ">
+              <Header />
+              <div className="w-full p-2 px-3 border my-2 shadow bg-white dark:bg-dark-card rounded-md h-[92%] overflow-y-auto">
+                {children}
+              </div>
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>

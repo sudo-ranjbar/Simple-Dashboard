@@ -44,6 +44,7 @@
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -54,17 +55,19 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   --font-vazir: "Vazir", sans-serif;
+  --color-dark-card: oklch(37% 0.013 285.805);
 }
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(98.5% 0.001 106.423);
+  --background: oklch(96.7% 0.003 264.542);
   --foreground: oklch(27.4% 0.006 286.033);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.723 0.219 149.579);
+  --primary: oklch(48.8% 0.243 264.376);
+  --primary-hover: oklch(42.4% 0.199 265.638);
   --primary-foreground: oklch(0.982 0.018 155.826);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
@@ -93,12 +96,13 @@
 
 .dark {
   --background: oklch(27.4% 0.006 286.033);
-  --foreground: oklch(98.5% 0.001 106.423);
+  --foreground: oklch(1 0 0);
   --card: oklch(0.21 0.006 285.885);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.696 0.17 162.48);
+  --primary: oklch(69.6% 0.17 162.48);
+  --primary-hover: oklch(59.6% 0.145 163.225);
   --primary-foreground: oklch(0.393 0.095 152.535);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
@@ -132,5 +136,12 @@
   body {
     @apply bg-background text-foreground;
     @apply font-vazir;
+  }
+}
+
+@layer components{
+
+  .post-list-container{
+    max-width: 100%;
   }
 }
