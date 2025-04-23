@@ -1,7 +1,9 @@
-import { ThemeProvider } from "@/providers/theme-provider";
 import "./globals.css";
+import { ThemeProvider } from "@/providers/theme-provider";
 import Sidebar from "@/components/layout/sidebar";
 import Header from "@/components/layout/header";
+
+// import WYSIWYGScript from "@/providers/flowbite-wysiwyg";
 
 export const metadata = {
   title: "Create Next App",

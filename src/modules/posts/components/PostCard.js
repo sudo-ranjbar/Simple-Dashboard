@@ -7,12 +7,10 @@ export default function PostCard() {
   return (
 
     <div className="w-2xs bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-      <Link href="#">
-        <Image className="rounded-t-lg" src="/images/posts/image-1.jpg" alt="post-image" width={1000} height={100}/>
-      </Link>
+      <Image className="rounded-t-lg" src="/images/posts/image-1.jpg" alt="post-image" width={1000} height={100} />
       <div className="p-5">
         <Link href="#">
-          <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white hover:text-primary">
             لورم ایپسوم متن ساختگی
           </h5>
         </Link>
