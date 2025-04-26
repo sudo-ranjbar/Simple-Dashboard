@@ -3,7 +3,6 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import Sidebar from "@/components/layout/sidebar";
 import Header from "@/components/layout/header";
 
-// import WYSIWYGScript from "@/providers/flowbite-wysiwyg";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,13 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
+
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="flex h-screen p-2 gap-x-5">
             <Sidebar />
             <div className="p-4 bg-background rounded-md w-full h-full border shadow ">

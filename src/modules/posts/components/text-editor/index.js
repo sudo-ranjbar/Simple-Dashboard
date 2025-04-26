@@ -15,7 +15,7 @@ import "flowbite"
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import MenuBar from './MenuBar'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function RichTextEditor() {
 
@@ -55,7 +55,12 @@ export default function RichTextEditor() {
     },
   });
 
+  const [editorContent, setEditorContent] = useState("سلام دنیا");
+
   const editor = useEditor({
+    onUpdate({ editor }) {
+      setEditorContent(editor.getHTML());
+    },
     extensions: [
       StarterKit.configure({
         textStyle: false,
@@ -71,14 +76,14 @@ export default function RichTextEditor() {
         autolink: true,
         defaultProtocol: 'https',
       }),
-      TextAlign,
+      // TextAlign,
       Image,
       YouTube,
-      TextStyle,
+      // TextStyle,
       FontSizeTextStyle,
       FontFamily,
       Color,
-      Bold,
+      // Bold,
       CustomBold,
       TextAlign.configure({
         types: ["heading", "paragraph"]
@@ -88,9 +93,10 @@ export default function RichTextEditor() {
     content: '<p>سلام دنیا</p>',
     editorProps: {
       attributes: {
-        class: "min-h-[200px] border rounded-md px-3 py-2 format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none"
+        class: "min-h-[200px] dark:text-white border rounded-md px-3 py-2 format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none"
       }
-    }
+    },
+    immediatelyRender: false,
   })
 
   useEffect(() => {
@@ -228,6 +234,7 @@ export default function RichTextEditor() {
             fontFamilyDropdown.hide();
           });
         });
+
       }
 
     }
@@ -248,8 +255,9 @@ export default function RichTextEditor() {
     <>
       <div className="w-full border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
         <MenuBar editor={editor} />
-        <EditorContent editor={editor} id='wysiwyg'/>
-
+        <EditorContent editor={editor} />
+        {editorContent &&
+          <div>{editorContent}</div>}
       </div>
     </>
   )

@@ -133,9 +133,9 @@
 }
 
 @layer base {
-  * {
+  /* * {
     @apply border-border outline-ring/50;
-  }
+  } */
   body {
     @apply bg-background text-foreground;
     @apply font-vazir;
@@ -145,10 +145,6 @@
 }
 
 @layer components{
-
-  .post-list-container{
-    max-width: 100%;
-  }
 
   /* Basic editor styles */
 .tiptap {
@@ -248,4 +244,6 @@
     margin: 2rem 0;
   }
 }
+
+
 }

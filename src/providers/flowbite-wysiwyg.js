@@ -234,6 +234,7 @@ export default function WYSIWYGScript() {
     }
 
     if (document.readyState === "complete") {
+      initFlowbite()
       runScriptAfterDomLoaded();
     } else {
       window.addEventListener("load", runScriptAfterDomLoaded);
