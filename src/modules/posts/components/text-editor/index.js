@@ -17,7 +17,7 @@ import StarterKit from '@tiptap/starter-kit'
 import MenuBar from './MenuBar'
 import { useEffect, useState } from 'react'
 
-export default function RichTextEditor() {
+export default function RichTextEditor({content, onChange}) {
 
 
   const FontSizeTextStyle = TextStyle.extend({
@@ -55,11 +55,9 @@ export default function RichTextEditor() {
     },
   });
 
-  const [editorContent, setEditorContent] = useState("سلام دنیا");
-
   const editor = useEditor({
     onUpdate({ editor }) {
-      setEditorContent(editor.getHTML());
+      onChange(editor.getHTML());
     },
     extensions: [
       StarterKit.configure({
@@ -90,10 +88,10 @@ export default function RichTextEditor() {
       })
 
     ],
-    content: '<p>سلام دنیا</p>',
+    content: content,
     editorProps: {
       attributes: {
-        class: "min-h-[200px] dark:text-white border rounded-md px-3 py-2 format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none"
+        class: "min-h-[300px] dark:text-white border rounded-md px-3 py-2 format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-full"
       }
     },
     immediatelyRender: false,
@@ -256,8 +254,8 @@ export default function RichTextEditor() {
       <div className="w-full border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
         <MenuBar editor={editor} />
         <EditorContent editor={editor} />
-        {editorContent &&
-          <div>{editorContent}</div>}
+        {content &&
+          <div>{content}</div>}
       </div>
     </>
   )

@@ -2,7 +2,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import Sidebar from "@/components/layout/sidebar";
 import Header from "@/components/layout/header";
-
+import ToastifyClient from "@/components/libraries/ToastifyClient"
 
 export const metadata = {
   title: "Create Next App",
@@ -24,6 +24,7 @@ export default function RootLayout({ children }) {
               </div>
             </div>
           </div>
+          <ToastifyClient position="top-right" autoClose={2500} hideProgressBar={false} newestOnTop={false} closeOnClick={true} rtl={true} pauseOnFocusLoss draggable pauseOnHover theme="colored" />
         </ThemeProvider>
       </body>
     </html>

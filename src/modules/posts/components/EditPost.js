@@ -1,18 +1,20 @@
 "use client"
-import ContentWrapper from "@/components/layout/content-wrapper";
-import SubmitButton from "@/components/ui/SubmitButton";
-import createPost from "@/modules/posts/actions/create-post";
-import RichTextEditor from "@/modules/posts/components/text-editor";
-import { useRouter } from "next/navigation";
-import { useActionState, useEffect, useState } from "react";
-import { toast } from "react-toastify";
+
+import ContentWrapper from "@/components/layout/content-wrapper"
+import { useRouter } from "next/navigation"
+import { useActionState, useEffect, useState } from "react"
+import { toast } from "react-toastify"
+import RichTextEditor from "./text-editor"
+import SubmitButton from "@/components/ui/SubmitButton"
+import editPost from "../actions/edit-post"
 
 
-export default function CreatePost() {
 
-  const [body, setBody] = useState("")
+export default function EditPost({ post }) {
 
-  const [state, formAction, isPending] = useActionState(createPost, {})
+  const [body, setBody] = useState(post.post_content)
+
+  const [state, formAction, isPending] = useActionState(editPost, {})
 
   const router = useRouter()
 
@@ -25,6 +27,7 @@ export default function CreatePost() {
     }
 
   }, [state])
+
   return (
     <>
 
@@ -34,15 +37,15 @@ export default function CreatePost() {
           <div className="grid gap-6 mb-6 md:grid-cols-3 max-w-3xl">
             <div>
               <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">عنوان مقاله:</label>
-              <input name="title" type="text" id="title" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:text-white required " />
+              <input defaultValue={post.post_title} name="title" type="text" id="title" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:text-white required " />
             </div>
             <div>
               <label htmlFor="author" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">نام نویسنده:</label>
-              <input name="author" type="text" id="author" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:text-white required " />
+              <input disabled defaultValue={post.post_author} name="author" type="text" id="author" className="cursor-not-allowed bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:text-white required " />
             </div>
             <div>
               <label htmlFor="post-name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">نام مقاله:</label>
-              <input name="post-name" type="text" id="post-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:text-white required " />
+              <input defaultValue={post.post_name} name="post-name" type="text" id="post-name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:text-white required " />
             </div>
             <div>
               <label htmlFor="author-email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ایمیل نویسنده:</label>
@@ -53,7 +56,7 @@ export default function CreatePost() {
                     <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
                   </svg>
                 </div>
-                <input name="email" type="email" id="author-email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="example@gmail.com" dir="ltr" />
+                <input disabled defaultValue={post.author.email} name="email" type="email" id="author-email" className="cursor-not-allowed bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="example@gmail.com" dir="ltr" />
               </div>
             </div>
             <div className="">
@@ -72,8 +75,8 @@ export default function CreatePost() {
             <RichTextEditor content={body} onChange={setBody} />
             <input name="body" value={body} type="hidden" />
           </div>
-
-          <SubmitButton title="ایجاد پست" isPending={isPending} style="" />
+          <input name="id" value={post.id} type="hidden" />
+          <SubmitButton title={"ویرایش پست"} isPending={isPending} style="" />
 
         </form>
 

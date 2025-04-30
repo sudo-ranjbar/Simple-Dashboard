@@ -1,11 +1,14 @@
 import ContentHeading from "@/components/layout/content-heading";
 import ContentWrapper from "@/components/layout/content-wrapper";
-import PostListView from "@/modules/posts/views/PostListView";
+import PostListView from "@/modules/posts/components/PostListView";
 import Link from "next/link";
+import { Suspense } from "react";
 import { MdCreateNewFolder } from "react-icons/md";
 
 
-export default function PostPage() {
+export default async function PostPage({ searchParams }) {
+
+  const params = new URLSearchParams(await searchParams)
 
   const title = "پست ها"
   return (
@@ -20,7 +23,9 @@ export default function PostPage() {
       </div>
 
       <ContentWrapper>
-        <PostListView />
+        <Suspense key={params.toString()} fallback={`Loding...`}>
+          <PostListView params={params.toString()} />
+        </Suspense>
       </ContentWrapper>
     </>
   )
