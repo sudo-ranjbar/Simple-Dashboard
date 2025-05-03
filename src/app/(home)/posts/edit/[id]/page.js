@@ -10,10 +10,7 @@ export default async function EditPostPage({ params }) {
 
   const post = await getFetch(`http://127.0.0.1:8000/api/posts/${id}`);
 
-  // console.log(post);
   
-
-
   return (
     <>
       <EditPost post={post} />

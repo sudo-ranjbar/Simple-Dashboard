@@ -34,9 +34,6 @@ export default async function editPost(state, formData) {
   }
 
 
-
-
-
   const data = await putFetch(`http://127.0.0.1:8000/api/posts/${id}`,
     {
       post_title: title,

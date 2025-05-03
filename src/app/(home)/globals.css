@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "flowbite-react/plugin/tailwindcss";
-@source "../../.flowbite-react/class-list.json";
+@source "../../../.flowbite-react/class-list.json";
 @import "tw-animate-css";
 @plugin "flowbite-typography";
 
@@ -8,12 +8,12 @@
 
 @font-face {
   font-family: "Vazir";
-  src: url(../../public/fonts/Vazir.eot);
+  src: url(../../../public/fonts/Vazir.eot);
   /* IE9 Compat Modes */
-  src: url(../../public/fonts/Vazir.eot) format("embedded-opentype"),
-    url(../../public/fonts/Vazir.woff2) format("woff2"),
-    url(../../public/fonts/Vazir.woff) format("woff"),
-    url(../../public/fonts/Vazir.ttf) format("truetype");
+  src: url(../../../public/fonts/Vazir.eot) format("embedded-opentype"),
+    url(../../../public/fonts/Vazir.woff2) format("woff2"),
+    url(../../../public/fonts/Vazir.woff) format("woff"),
+    url(../../../public/fonts/Vazir.ttf) format("truetype");
   /* Safari, Android, iOS */
 }
 
